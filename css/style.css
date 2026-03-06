@@ -418,7 +418,7 @@ html, body {
     background: none;
     border: none;
     color: rgba(232, 226, 213, 0.5);
-    font-size: 15px;
+    font-size: 16px;
     cursor: pointer;
     line-height: 1;
     transition: color 0.2s ease;
@@ -911,7 +911,7 @@ html, body {
     }
 
     .page__content--result {
-        padding-bottom: 200px;
+        padding-bottom: 220px;
     }
 }
 
