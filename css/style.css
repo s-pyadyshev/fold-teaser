@@ -478,7 +478,7 @@ html, body {
 .modal__input {
     font-family: 'Lato', sans-serif;
     font-weight: 300;
-    font-size: 14px;
+    font-size: 16px;
     color: #fff;
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.5);
@@ -747,6 +747,11 @@ html, body {
 }
 
 @media (max-width: 767px) {
+    .footer__address,
+    .footer__email {
+        font-size: 14px;
+    }
+
     .header {
         margin-bottom: 48px;
     }
@@ -828,7 +833,7 @@ html, body {
     }
 
     .result__text {
-        font-size: 18px;
+        font-size: 14px;
         line-height: 22px;
         max-width: 290px;
     }

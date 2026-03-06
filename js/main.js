@@ -502,7 +502,7 @@ class PageAnimator {
     const resultNav = result?.querySelector(".result__nav");
 
     gsap.fromTo(
-      logo,
+      [logo, header].filter(Boolean),
       { opacity: 0 },
       { opacity: 1, duration: 0.6, delay: 0.5, ease: this.config.ease },
     );
