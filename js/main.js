@@ -167,7 +167,11 @@ class PageAnimator {
   handleResize() {
     clearTimeout(this._resizeTimer);
     this._resizeTimer = setTimeout(() => {
-      if (this.state === AnimationState.HERO) {
+      if (this.state === AnimationState.RESULT) {
+        const { pageWrapper, footer } = this.elements;
+        if (pageWrapper && footer) {
+          pageWrapper.style.paddingBottom = `${footer.offsetHeight + 100}px`;
+        }
       }
     }, 150);
   }
@@ -385,6 +389,7 @@ class PageAnimator {
       result?.classList.remove("result--visible");
       header?.classList.remove("header--result");
       pageWrapper?.classList.remove("page__content--result");
+      if (pageWrapper) pageWrapper.style.paddingBottom = "";
     }
 
     exploreNav?.classList.remove("explore-nav--visible");
@@ -494,6 +499,11 @@ class PageAnimator {
     footer?.classList.add("footer--visible");
     header?.classList.add("header--result");
     pageWrapper?.classList.add("page__content--result");
+
+    if (pageWrapper && footer) {
+      pageWrapper.style.paddingBottom = `${footer.offsetHeight + 100}px`;
+    }
+
     gsap.set(result, { opacity: 0 });
 
     const resultEyebrow = result?.querySelector(".result__eyebrow");
@@ -556,6 +566,7 @@ class PageAnimator {
     result?.classList.remove("result--visible");
     header?.classList.remove("header--result");
     pageWrapper?.classList.remove("page__content--result");
+    if (pageWrapper) pageWrapper.style.paddingBottom = "";
 
     exploreNav?.classList.add("explore-nav--visible");
     footer?.classList.add("footer--visible");
