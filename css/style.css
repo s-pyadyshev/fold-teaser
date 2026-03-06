@@ -747,6 +747,10 @@ html, body {
 }
 
 @media (max-width: 767px) {
+    .discover {
+        font-size: 14px;
+    }
+
     .footer__address,
     .footer__email {
         font-size: 14px;
@@ -903,7 +907,7 @@ html, body {
     }
 
     .hero__text {
-        font-size: 15px;
+        font-size: 14px;
     }
 
     .result__body {
@@ -954,4 +958,23 @@ html, body {
     .hero__btn {
         height: 34px;
     }
+}
+
+.discover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 22px;
+    color: var(--color-cream);
+    margin-bottom: 22px;
 }

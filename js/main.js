@@ -44,6 +44,7 @@ class PageAnimator {
       footer: "#footer",
       exploreNav: "#exploreNav",
       pageWrapper: ".page__content",
+      discover: ".discover",
     };
 
     const elements = {};
@@ -76,12 +77,13 @@ class PageAnimator {
   }
 
   setInitialState() {
-    const { logo, overlay, heroItems } = this.elements;
+    const { logo, overlay, heroItems, discover } = this.elements;
     if (!logo || !overlay) return;
 
     const offsetY = this.computeLogoOffset();
 
     gsap.set(heroItems, { opacity: 0 });
+    gsap.set(discover, { opacity: 0 });
 
     gsap.fromTo(
       overlay,
@@ -105,7 +107,7 @@ class PageAnimator {
   }
 
   animateHeroEntrance() {
-    const { heroItems } = this.elements;
+    const { heroItems, discover } = this.elements;
     const [eyebrow, title, divider, text, btn] = heroItems;
 
     gsap.fromTo(
@@ -127,6 +129,31 @@ class PageAnimator {
       { opacity: 0, y: 40 },
       { opacity: 1, y: 0, duration: 1.35, delay: 1.1, ease: this.config.ease },
     );
+
+    gsap.fromTo(
+      discover,
+      { opacity: 0, y: 12 },
+      { opacity: 1, y: 0, duration: 0.5, delay: 1.5, ease: this.config.ease },
+    );
+  }
+
+  hideDiscover() {
+    const { discover } = this.elements;
+    if (!discover) return;
+    gsap.killTweensOf(discover);
+    gsap.to(discover, { opacity: 0, duration: 0.25, ease: "power2.in" });
+  }
+
+  showDiscover() {
+    const { discover } = this.elements;
+    if (!discover) return;
+    gsap.killTweensOf(discover);
+    gsap.to(discover, {
+      opacity: 1,
+      duration: 0.5,
+      delay: 0.2,
+      ease: "power2.out",
+    });
   }
 
   bindEvents() {
@@ -152,7 +179,6 @@ class PageAnimator {
     document.addEventListener("touchmove", this._handleTouchMove, {
       passive: true,
     });
-
     window.addEventListener("resize", this._handleResize);
   }
 
@@ -225,16 +251,14 @@ class PageAnimator {
     const { modal, modalBackdrop, modalWindow, logo, heroItems } =
       this.elements;
 
+    this.hideDiscover();
+
     modal?.classList.add("modal--open");
     gsap.to(
       [logo, ...heroItems, this.elements.hero, this.elements.header].filter(
         Boolean,
       ),
-      {
-        opacity: 0,
-        duration: 0.3,
-        ease: "power2.in",
-      },
+      { opacity: 0, duration: 0.3, ease: "power2.in" },
     );
     gsap.to(modalBackdrop, { opacity: 1, duration: 0.35, ease: "power2.out" });
     gsap.to(modalWindow, {
@@ -249,7 +273,6 @@ class PageAnimator {
     const { modalBackdrop, modalWindow, modal } = this.elements;
 
     gsap.to(modalBackdrop, { opacity: 0, duration: 0.3, ease: "power2.in" });
-
     gsap.to(modalWindow, {
       opacity: 0,
       scale: 0.94,
@@ -277,6 +300,8 @@ class PageAnimator {
         delay: 0.2,
         ease: "power2.out",
       });
+
+      this.showDiscover();
     }
   }
 
@@ -288,6 +313,10 @@ class PageAnimator {
     this.state = AnimationState.EXPLORE;
 
     const { heroItems, logo, hero, header, exploreNav, footer } = this.elements;
+
+    this.hideDiscover();
+
+    gsap.killTweensOf([logo, hero, header, exploreNav, footer, ...heroItems]);
 
     gsap.to(heroItems, {
       y: -60,
@@ -385,6 +414,16 @@ class PageAnimator {
       pageWrapper,
     } = this.elements;
 
+    gsap.killTweensOf([
+      logo,
+      hero,
+      header,
+      exploreNav,
+      footer,
+      result,
+      ...heroItems,
+    ]);
+
     if (comingFromResult) {
       result?.classList.remove("result--visible");
       header?.classList.remove("header--result");
@@ -410,6 +449,7 @@ class PageAnimator {
           ease: this.config.ease,
           onComplete: () => {
             this.isAnimating = false;
+            this.showDiscover();
           },
         },
       );
@@ -436,6 +476,7 @@ class PageAnimator {
               duration: 0.9,
               stagger: 0.15,
               ease: this.config.ease,
+              onComplete: () => this.showDiscover(),
             },
           );
         },
@@ -467,6 +508,7 @@ class PageAnimator {
                 duration: 0.9,
                 stagger: 0.15,
                 ease: this.config.ease,
+                onComplete: () => this.showDiscover(),
               },
             );
           },
@@ -476,9 +518,7 @@ class PageAnimator {
   }
 
   showResult() {
-    if (this.state !== AnimationState.MODAL) {
-      return;
-    }
+    if (this.state !== AnimationState.MODAL) return;
 
     this.closeModal();
     this.previousState = AnimationState.HERO;
