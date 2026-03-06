@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fold</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+</head>
+
+<body>
+    <div class="page">
+        <div class="page__bg"></div>
+        <div class="page__overlay"></div>
+
+        <div class="page__content">
+            <header class="header">
+                <img class="header__logo" src="./img/fold.svg" alt="fold logo." width="98" height="40">
+            </header>
+
+            <main class="hero">
+                <p class="hero__eyebrow">Good things take time</p>
+                <h1 class="hero__title">Welcome to the Fold project.</h1>
+                <div class="hero__divider"></div>
+                <p class="hero__text">
+                    We're currently at the Priory Estate, layering together<br>
+                    a project that's being built entirely by hand.
+                </p>
+                <div class="hero__action">
+                    <button class="hero__btn">Subscribe</button>
+                </div>
+            </main>
+
+            <nav class="explore-nav" id="exploreNav">
+                <span class="result__nav-item">Kitchen</span>
+                <span class="result__nav-sep">•</span>
+                <span class="result__nav-item">Garden</span>
+                <span class="result__nav-sep">•</span>
+                <span class="result__nav-item">Bakery</span>
+                <span class="result__nav-sep">•</span>
+                <span class="result__nav-item">Bees</span>
+                <span class="result__nav-sep">•</span>
+                <span class="result__nav-item">Retreat</span>
+            </nav>
+
+            <section class="result" id="result">
+                <p class="result__eyebrow">We call it fold because</p>
+                <h2 class="result__title">everything here<br class="result-br--mobile"> works together.</h2>
+                <div class="result__body">
+                    <p class="result__text">The land supports the bees.<br class="result-br--mobile"> The bees help <br
+                            class="result-br--desktop">the garden.<br class="result-br--mobile"> The garden feeds the
+                        kitchen.<br class="result-br--mobile"><br class="result-br--desktop">And the kitchen looks after
+                        you.</p>
+                    <p class="result__text result__text--small">We're currently at the Priory Estate,
+                        layering<br>together a project that's being built entirely by hand.</p>
+                </div>
+                <nav class="result__nav">
+                    <span class="result__nav-item">Kitchen</span>
+                    <span class="result__nav-sep">•</span>
+                    <span class="result__nav-item">Garden</span>
+                    <span class="result__nav-sep">•</span>
+                    <span class="result__nav-item">Bakery</span>
+                    <span class="result__nav-sep">•</span>
+                    <span class="result__nav-item">Bees</span>
+                    <span class="result__nav-sep">•</span>
+                    <span class="result__nav-item">Retreat</span>
+                </nav>
+            </section>
+        </div>
+
+        <footer class="footer" id="footer">
+            <div class="footer__inner">
+                <div class="footer__left">
+                    <div class="footer__logo">fold.</div>
+                    <p class="footer__address">Unit 10, Priory Court, Poulton,<br>Cirencester GL7 5JB</p>
+                    <p class="footer__email"><a href="mailto:hello@foldcotswolds.co.uk">hello@foldcotswolds.co.uk</a>
+                    </p>
+                </div>
+                <div class="footer__social">
+                    <button class="footer__social-btn" type="button"><img class="footer__social-icon"
+                            src="./img/facebook.svg" alt="Facebook."></button>
+                    <button class="footer__social-btn" type="button"><img class="footer__social-icon" src="./img/x.svg"
+                            alt="X."></button>
+                    <button class="footer__social-btn" type="button"><img class="footer__social-icon"
+                            src="./img/insta.svg" alt="Instagram."></button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal__backdrop"></div>
+        <div class="modal__window">
+            <button class="modal__close" id="modalClose">&#x2715;</button>
+            <img class="modal__logo" src="./img/fold.svg" alt="fold.">
+            <h2 class="modal__title">Join our mailing list</h2>
+            <p class="modal__subtitle">Receive exclusive updates &amp;<br class="modal__subtitle-br"> news on
+                invite-only events.</p>
+            <form class="modal__form" id="modalForm">
+                <div class="modal__row">
+                    <input class="modal__input" type="text" placeholder="First name" name="firstname" required>
+                    <input class="modal__input" type="text" placeholder="Last name" name="lastname" required>
+                </div>
+                <div class="modal__row">
+                    <input class="modal__input" type="email" placeholder="Email" name="email">
+                    <button class="modal__btn" type="submit">Subscribe</button>
+                </div>
+            </form>
+            <p class="modal__note">By signing up, you agree with our privacy policy.</p>
+        </div>
+    </div>
+
+    <script src="./js/gsap.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
